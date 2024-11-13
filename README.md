@@ -10,7 +10,6 @@ Kreva is a simple slackbot to auto add me to new channels in the [Hackclub](http
 
 Create a slack app as per the [manifest.yaml](manifest.yaml) and an env as below  
 
-`.env`
 ```bash
 SLACK_BOT_TOKEN=xoxb-xxx-xxxx-xxxxxx
 SLACK_SIGNING_SECRET=xxxxxx
