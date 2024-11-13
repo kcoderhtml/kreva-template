@@ -9,7 +9,7 @@ import quip from "./quip";
 console.log(
 	`----------------------------------\n${name} Server\n----------------------------------\n`,
 );
-console.log("🏗️  Starting ABOT...");
+console.log(`🏗️  Starting ${name}...`);
 console.log("📦 Loading Slack App...");
 console.log("🔑 Loading environment variables...");
 
