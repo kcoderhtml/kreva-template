@@ -1,11 +1,7 @@
 import { SlackApp } from "slack-edge";
 
-import { PrismaClient } from "@prisma/client";
-
 import * as features from "./features/index";
 
-import { t } from "./lib/template";
-import { blog } from "./lib/Logger";
 const { version, name } = require("./package.json");
 const environment = process.env.NODE_ENV;
 
@@ -16,10 +12,20 @@ console.log("🏗️  Starting ABOT...");
 console.log("📦 Loading Slack App...");
 console.log("🔑 Loading environment variables...");
 
+if (
+	!process.env.SLACK_BOT_TOKEN ||
+	!process.env.SLACK_SIGNING_SECRET ||
+	!process.env.ADMINS
+) {
+	throw new Error(
+		"Missing required environment variables: SLACK_BOT_TOKEN SLACK_SIGNING_SECRET or ADMINS",
+	);
+}
+
 const slackApp = new SlackApp({
 	env: {
-		SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN!,
-		SLACK_SIGNING_SECRET: process.env.SLACK_SIGNING_SECRET!,
+		SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN,
+		SLACK_SIGNING_SECRET: process.env.SLACK_SIGNING_SECRET,
 		SLACK_LOGGING_LEVEL: "INFO",
 	},
 	startLazyListenerAfterAck: true,
@@ -53,22 +59,10 @@ export default {
 	},
 };
 
-// loading db
-console.log(`⛁  Loading DB...`);
-const prisma = new PrismaClient();
-// list days of analytics
-console.log(`📅 Loaded ${await prisma.analytics.count()} days of analytics.`);
-
 console.log(
 	`🚀 Server Started in ${Bun.nanoseconds() / 1000000} milliseconds on version: ${version}!\n\n----------------------------------\n`,
 );
 
-blog(
-	t("app.startup", {
-		environment,
-	}),
-	"start",
-);
 console.log("\n----------------------------------\n");
 
-export { slackApp, slackClient, version, name, environment, prisma };
+export { slackApp, slackClient, version, name, environment };
