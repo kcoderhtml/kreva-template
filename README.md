@@ -6,6 +6,10 @@
 
 Kreva is a simple slackbot to auto add me to new channels in the [Hackclub](https://hackclub.com/slack/) slack
 
+---
+
+![gif of the program in action](https://github.com/kcoderhtml/kreva/raw/master/.github/images/out.gif)
+
 # Usage
 
 Create a slack app as per the [manifest.yaml](manifest.yaml) and an env as below  
