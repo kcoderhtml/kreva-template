@@ -7,7 +7,7 @@ const environment = process.env.NODE_ENV;
 import quip from "./quip";
 
 console.log(
-	`----------------------------------\n${name} Server\n----------------------------------\n`,
+	`----------------------------------\n${name} server\n----------------------------------\n`,
 );
 console.log(`🏗️  Starting ${name}...`);
 console.log("📦 Loading Slack App...");
