@@ -4,6 +4,7 @@ import * as features from "./features/index";
 
 const { version, name } = require("./package.json");
 const environment = process.env.NODE_ENV;
+import quip from "./quip";
 
 console.log(
 	`----------------------------------\n${name} Server\n----------------------------------\n`,
@@ -62,6 +63,8 @@ export default {
 console.log(
 	`🚀 Server Started in ${Bun.nanoseconds() / 1000000} milliseconds on version: ${version}!\n\n----------------------------------\n`,
 );
+
+console.log(quip());
 
 console.log("\n----------------------------------\n");
 
